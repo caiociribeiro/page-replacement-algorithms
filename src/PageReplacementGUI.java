@@ -65,7 +65,7 @@ public class PageReplacementGUI {
         cA.anchor = GridBagConstraints.WEST;
 
         cA.gridx = 0; cA.gridy = 0;
-        pnlAleatorioInputs.add(new JLabel("Número total de páginas (1 a 100000):"), cA);
+        pnlAleatorioInputs.add(new JLabel("Número total de páginas (1 a 10000):"), cA);
         cA.gridx = 1;
         tfNumPages = new JFormattedTextField(intFormat);
         tfNumPages.setColumns(10);
@@ -74,7 +74,7 @@ public class PageReplacementGUI {
 
         // Max Value
         cA.gridx = 0; cA.gridy = 1;
-        pnlAleatorioInputs.add(new JLabel("Valor máximo da página (1 a 50):"), cA);
+        pnlAleatorioInputs.add(new JLabel("Tamanho do espaço de endereçamento virtual (páginas únicas) (1 a 20):"), cA);
         cA.gridx = 1;
         tfMaxValue = new JFormattedTextField(intFormat);
         tfMaxValue.setColumns(10);
@@ -187,12 +187,12 @@ public class PageReplacementGUI {
                 return;
             }
 
-            if (numPages < 1 || numPages > 100000) {
+            if (numPages < 1 || numPages > 10000) {
                 JOptionPane.showMessageDialog(frame, "Número de páginas para Geração deve estar entre 1 e 100000.", "Entrada inválida", JOptionPane.ERROR_MESSAGE);
                 btnRun.setEnabled(true);
                 return;
             }
-            if (maxValue < 1 || maxValue > 50) {
+            if (maxValue < 1 || maxValue > 20) {
                 JOptionPane.showMessageDialog(frame, "Valor máximo da página deve estar entre 1 e 50.", "Entrada inválida", JOptionPane.ERROR_MESSAGE);
                 btnRun.setEnabled(true);
                 return;
@@ -373,4 +373,5 @@ public class PageReplacementGUI {
             });
         }
     }
+
 }

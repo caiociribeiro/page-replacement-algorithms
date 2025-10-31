@@ -9,9 +9,9 @@ public class PageReplacement {
      *
      * @param pages Lista de paginas
      * @param numFrames - Numero de frames de memoria disponiveis
-     * @return Numero de faltas de pagina
+     * @param log
      */
-    public static int fifo(int[] pages, int numFrames, Consumer<String> log) {
+    public static void fifo(int[] pages, int numFrames, Consumer<String> log) {
         int faults = 0;
         Set<Integer> frames = new HashSet<>();
         Queue<Integer> queue = new LinkedList<>();
@@ -38,9 +38,9 @@ public class PageReplacement {
                 log.accept(String.format("(FIFO) Acesso %d: (%d) -> HIT", i, page));
             }
             log.accept("(FIFO) Frames: " + framesToString(frames));
+            log.accept("(FIFO) Fila: " + queue);
         }
         log.accept(String.format("(FIFO) Total de faltas: %d", faults));
-        return faults;
     }
 
     /***
@@ -49,9 +49,9 @@ public class PageReplacement {
      *
      * @param pages Lista de paginas
      * @param numFrames - Numero de frames de memoria disponiveis
-     * @return Numero de faltas de pagina
+     * @param log
      */
-    public static int lru(int[] pages, int numFrames,  Consumer<String> log) {
+    public static void lru(int[] pages, int numFrames,  Consumer<String> log) {
         int faults = 0;
         Set<Integer> frames = new HashSet<>();
         List<Integer> usage = new ArrayList<>();
@@ -84,7 +84,6 @@ public class PageReplacement {
             log.accept("(LRU) Ordem: " + usage);
         }
         log.accept(String.format("(LRU) Total de faltas: %d", faults));
-        return faults;
     }
 
     /***
@@ -93,9 +92,9 @@ public class PageReplacement {
      *
      * @param pages Lista de paginas
      * @param numFrames - Numero de frames de memoria disponiveis
-     * @return Numero de faltas de pagina
+     * @param log
      */
-    public static int optimal(int[] pages, int numFrames, Consumer<String> log) {
+    public static void optimal(int[] pages, int numFrames, Consumer<String> log) {
         int faults = 0;
         List<Integer> frames = new ArrayList<>();
 
@@ -147,7 +146,6 @@ public class PageReplacement {
             log.accept("(Opt) Frames: " + framesToString(frames));
         }
         log.accept(String.format("(Opt) Total de faltas: %d", faults));
-        return faults;
     }
 
     /***
@@ -156,10 +154,10 @@ public class PageReplacement {
      *
      * @param pages Lista de paginas
      * @param numFrames - Numero de frames de memoria disponiveis
-     * @return Numero de faltas de pagina
+     * @param log
      */
 
-    public static int clock(int[] pages, int numFrames, Consumer<String> log) {
+    public static void clock(int[] pages, int numFrames, Consumer<String> log) {
         int faults = 0;
         // arraylist vai ser tratada como lista circular
         List<ClockEntry> frames = new ArrayList<>();
@@ -221,7 +219,6 @@ public class PageReplacement {
             log.accept(String.format("Frames: %s | Hand: %d",  frames, hand));
         }
         log.accept(String.format("(Clock) Total de faltas: %d", faults));
-        return faults;
     }
 
     private static class ClockEntry {
