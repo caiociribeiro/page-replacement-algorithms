@@ -10,10 +10,10 @@ A simulação utiliza cadeias de referência de página geradas aleatoriamente, 
 
 Esta seção permite que o usuário escolha como a sequência de páginas será gerada e defina o número de *frames*.
 
-* **Número de Frames:** Campo obrigatório, define o tamanho da memória. (1 a 10 frames)
+* **Número de Frames:** Campo obrigatório, define o tamanho da memória fisica. (1 a 10 frames)
 
 * Você pode alternar entre duas formas de fornecer as páginas:
-    * **Geração Aleatória (Padrão):** Os campos "Número total de páginas" (1 a 100000) e "Valor máximo da página" (0 a 50) são utilizados para gerar uma sequência aleatória.
+    * **Geração Aleatória (Padrão):** Os campos "Número total de páginas" (1 a 10000) e "Tamanho do espaco de enderecamento virtual" (0 a 20) são utilizados para gerar uma sequência aleatória.
     * **Entrada Manual:** Ao marcar a opção **"Usar Entrada Manual de Páginas"**, os campos aleatórios são desabilitados, e uma área de texto é habilitada para que você insira a sequência de páginas, separando os números por **vírgulas** ou **espaços**.
 
 * **Botão "Gerar e Rodar":** Inicia o processamento. Ao clicar, o programa solicita o local para salvar o arquivo de log e, em seguida, executa os quatro algoritmos.
